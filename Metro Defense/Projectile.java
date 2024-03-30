@@ -15,7 +15,7 @@ public class Projectile extends Actor
     private int damage = 1; //default, used by SimpleCannon
     public int getDamage() {return this.damage;}
     
-    private int speed = 6;  //default, used by SimpleCannon
+    private int speed = 7;  //default, used by SimpleCannon
     public void setSpeed(int speed) {this.speed = speed;}
     
     public Projectile() {}

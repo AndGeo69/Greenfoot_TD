@@ -46,6 +46,7 @@ public class Level1 extends MyWorld
         setNewWorldHealth(30);
         
         setTotalWavesToWinLevel(5);
+        
         setTotalEnemiesPerLevel(40);
         setNextLevel(new Level2());
         

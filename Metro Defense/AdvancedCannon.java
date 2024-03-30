@@ -21,6 +21,6 @@ public class AdvancedCannon extends Turret
     }
     
     public int price() {
-        return 120;
+        return 80;
     }
 }

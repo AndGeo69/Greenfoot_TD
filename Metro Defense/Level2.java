@@ -36,18 +36,11 @@ public class Level2 extends MyWorld
         setSpawnX(20);
         setSpawnY((TILE_SIZE * 2) - HALF_TILE_SIZE);
         
-        Menu menu = new Menu();
-        addObject(menu,720,300);
-        
         setMoney(150);
         setNewWorldHealth(30);
         
         setTotalWavesToWinLevel(5);
-        setTotalEnemiesPerLevel(60);
-        
-        addObject(new MoneyShowable(this), 720, 30);
-        addObject(new HPShowable(this), 720, 70);
-        addObject(new WaveShowable(this, 30), 720, 100);
+        setTotalEnemiesPerLevel(70);
      }
     
     public void act() {

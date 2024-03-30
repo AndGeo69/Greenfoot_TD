@@ -92,20 +92,26 @@ public class MyWorld extends World
     {    
         super(840, 600, 1);
          
+                
+        setWorldMap(map);
+        addPath();
+        
+        
         Menu menu = new Menu();
         addObject(menu,720,300);
         addObject(new MoneyShowable(this), 720, 30);
         addObject(new HPShowable(this), 720, 70);
         addObject(new WaveShowable(this, 30), 720, 100);
-           
         
-        setWorldMap(map);
-        addPath();
+        new TurretShop(this);
+                  
+
+        addObject(new HelpText(), 720, 400);
     }
     
     
     public void act() {
-        addTurret(1);
+        addTurretByKeyPressed();
         checkRemainingEnemies();
         checkHp();
         spawnWave();
@@ -143,12 +149,23 @@ public class MyWorld extends World
         addObject(new Enemy(type, this), spawnX, spawnY);
     }
     
+    private void addTurretByKeyPressed() {
+        if (Greenfoot.isKeyDown("1")) {
+            addTurret(1);
+        } else if (Greenfoot.isKeyDown("2")) {
+            addTurret(2);
+        }
+        
+    }
+    
     public void addTurret(int type) {
        
         // not overlapping another actor
         if (Greenfoot.mouseClicked(null) && Greenfoot.getMouseInfo() != null && Greenfoot.getMouseInfo().getActor() == null) {
             if (type == 1) {
                 addCannon();
+            } else if (type == 2) {
+                addTurret(new AdvancedCannon());
             }
         }
         

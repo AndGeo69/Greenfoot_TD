@@ -26,8 +26,8 @@ public class Enemy extends Actor
             if(level == 1) {
                 setImage("spider.png");
                 getImage().scale(40, 40);
-                hp = 5;
-                movementSpeed = 3;
+                hp = 6;
+                movementSpeed = 4;
                 pricePerKill = 5;
             }
             else if(level == 2){

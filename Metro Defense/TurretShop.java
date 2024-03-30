@@ -10,14 +10,8 @@ import java.util.List;
  */
 public class TurretShop extends Actor
 {
-    public TurretShop() {
-        GreenfootImage simpleTurretImage = new SimpleCannon().getImage();
-        GreenfootImage simpleTurretImage2 = new AdvancedCannon().getImage();
-        
-        
-        
-        setImage(simpleTurretImage);
-        setImage(simpleTurretImage2);
-        //getWorld().setImage(new GreenfootImage("simple_cannon.png"), 720, 140);        
+    public TurretShop(MyWorld world) {
+        world.addObject(new ImageShowable(new SimpleCannon(), 1), 680, 200);
+        world.addObject(new ImageShowable(new AdvancedCannon(), 2), 750, 200);        
     }
 }
