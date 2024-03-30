@@ -54,18 +54,6 @@ public class MyWorld extends World
         totalEnemiesPerLevel = newTotalEnemiesPerLevel;
     }
     
-    private int totalWavesToWinLevel;
-    public int getTotalWavesToWinLevel() {return totalWavesToWinLevel;}
-    public void setTotalWavesToWinLevel(int newTotalWavesToWinLevel){
-        totalWavesToWinLevel = newTotalWavesToWinLevel;
-    }
-    
-    private int wave;
-    public int getWave() {return wave;}
-    public void setWave(int newWave){
-        wave = newWave;
-    }
-    
     private int worldHealth;
     public int getWorldHealth() {
         return worldHealth;

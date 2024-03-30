@@ -38,21 +38,12 @@ public class Level1 extends MyWorld
         
         setSpawnX(20);
         setSpawnY((TILE_SIZE * 3) - HALF_TILE_SIZE);
-        
-
-        
-        
+          
         setMoney(100);
         setNewWorldHealth(30);
         
-        setTotalWavesToWinLevel(5);
-        
         setTotalEnemiesPerLevel(40);
         setNextLevel(new Level2());
-        
-        remainingEnemies = getTotalEnemiesPerLevel();
-        
-        setWave(1);
      }
     
     public void act() {

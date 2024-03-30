@@ -1,12 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Level1 here.
+ * Write a description of class Level3 here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Level2 extends MyWorld
+public class Level3 extends MyWorld
 {
 
     public static final int TILE_SIZE = 60;
@@ -17,28 +17,29 @@ public class Level2 extends MyWorld
     //3 turh right
     //4 turn up
     //5 turn left
+    
+    
     public final static String[] WORLD = {
-            "0000000000",
-            "1111111120",
-            "0000000010",
-            "0021115010",
-            "0010001010",
-            "0010004150",
-            "0010000000",
-            "0010000000",
-            "0031120000",
-            "0000010000"
+        "2032000000",
+        "1011000000",
+        "1011000320",
+        "1011000110",
+        "1011000110",
+        "1011000131",
+        "1013111400",
+        "1010000000",
+        "1010000000",
+        "3140000000"
     };
         
-    public Level2() {
+    public Level3() {
         super(WORLD);   
 
         setSpawnX(20);
-        setSpawnY((TILE_SIZE * 2) - HALF_TILE_SIZE);
+        setSpawnY((TILE_SIZE * 1) - HALF_TILE_SIZE);
         
         setMoney(150);
         setNewWorldHealth(30);
-        setNextLevel(new Level3());
     
         setTotalEnemiesPerLevel(70);
      }
