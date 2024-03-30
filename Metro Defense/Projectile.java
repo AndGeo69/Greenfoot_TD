@@ -12,10 +12,28 @@ public class Projectile extends Actor
      * Act - do whatever the Projectile wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private int damage = 1; //default, used by SimpleCannon
+    public int getDamage() {return this.damage;}
     
-    private static final int speed = 6;
+    private int speed = 6;  //default, used by SimpleCannon
+    public void setSpeed(int speed) {this.speed = speed;}
+    
+    public Projectile() {}
+    
+    public Projectile(int damage) {
+        this.damage = damage;
+    }
+    
+
     public void act()
     {
         move(speed);
+        removeOnEdge();
+    }
+    
+    private void removeOnEdge() {
+        if (isAtEdge()) {
+            getWorld().removeObject(this);
+        }
     }
 }

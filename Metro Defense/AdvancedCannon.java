@@ -1,27 +1,26 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.List;
+
 /**
- * Write a description of class SimpleCannon here.
+ * Write a description of class AdvancedCannon here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class SimpleCannon extends Turret
+public class AdvancedCannon extends Turret
 {
-
     public int damage() {
-        return 1;
+        return 2;
     }
     
     public int fireRate() {
-        return 13;
+        return 17;
     }
     
     public int radius() {
-        return 100;
+        return 150;
     }
     
     public int price() {
-        return 50;
+        return 120;
     }
 }

@@ -42,7 +42,7 @@ public class Enemy extends Actor
                 getImage().scale(60, 60);
                 hp = 30;
                 movementSpeed = 2;
-                pricePerKill = 20;
+                pricePerKill = 16;
             }
             //else if(level == 4){
             //    setImage("blimp.png");
@@ -90,9 +90,10 @@ public class Enemy extends Actor
     }
     
     public void hit() {
-        Actor projectile = getOneIntersectingObject(Projectile.class);
+        Projectile projectile = (Projectile)getOneIntersectingObject(Projectile.class);
         if (projectile != null) {
-            hp--;
+            
+            hp = hp - projectile.getDamage();
             getWorld().removeObject(projectile);
         }
         
@@ -100,52 +101,12 @@ public class Enemy extends Actor
             myGame.money += pricePerKill;
             myGame.totalKills++;
             myGame.totalMoneyGained += pricePerKill;
+            myGame.setTotalEnemiesPerLevel(myGame.getTotalEnemiesPerLevel() - 1);
             getWorld().removeObject(this);
         } else if (atWorldEdge()) {
             myGame.setNewWorldHealth(myGame.getWorldHealth() - 1);
             getWorld().removeObject(this);
         }
-    }
-    
-    
-    
-    
-    public boolean canSee(Class clss) {
-        int width = getImage().getWidth();
-        int height = getImage().getHeight();
-        Actor actor = getOneObjectAtOffset(width + 1, 0, clss);
-        return actor != null;        
-    }
-    
-    private void checkMovement() {
-        // Check if there's an InvisibleObstacle in front
-        if (canSee(InvisibleObstacle.class) || atWorldEdge()) {
-            // If obstacle is detected, check if the SpiderEnemy can move left or right
-            if (canMoveInDirection(getRotation() + 90)) { // Check if can move right
-                setRotation(getRotation() + 90);// Move right
-                move(movementSpeed);
-            } else if (canMoveInDirection(getRotation() - 90)) {// Check if can move left
-                //move(-MOVEMENT_SPEED);
-                setRotation(getRotation() - 90);// Move left
-                move(movementSpeed);
-            }
-        }
-    }
-
-    // Check if the actor can move in the specified direction (left or right)
-    private boolean canMoveInDirection(int direction) {
-        // Convert direction to angle in radians
-        double angle = Math.toRadians(direction);
-        
-        // Calculate the next position based on the direction
-        int nextX = getX() + (int) (Math.cos(angle) * myGame.TILE_SIZE);
-        int nextY = getY() + (int) (Math.sin(angle) * myGame.TILE_SIZE);
-
-        // Check for obstacles at the next position
-        Actor obstacle = getOneObjectAtOffset(nextX - getX(), nextY - getY(), InvisibleObstacle.class);
-        
-        // Check if the next position is within the world bounds and if it's not blocked by an obstacle
-        return obstacle == null;
     }
     
     public boolean atWorldEdge() {

@@ -12,7 +12,7 @@ public class HPShowable extends Showable {
     }
 
     public String getValue() {
-        return String.valueOf(game.getWorldHealth());
+        return String.valueOf(game.getWorldHealth() >= 0 ? game.getWorldHealth() : 0);
     }
 
     protected String getLabelText() {

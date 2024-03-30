@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=WaveShowable
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ LevelShowable\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=game
-comment1.target=WaveShowable(MyWorld)
+comment1.params=game\ size
+comment1.target=WaveShowable(MyWorld,\ int)
 comment2.params=
 comment2.target=java.lang.String\ getValue()
 comment3.params=

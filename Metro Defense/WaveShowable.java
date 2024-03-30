@@ -8,15 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class WaveShowable extends Showable
 {
-    public WaveShowable(MyWorld game) {
-        super(game, "Wave: ");
+    public WaveShowable(MyWorld game, int size) {
+        super(game, "Enemies left: ", size);
     }
 
     public String getValue() {
-        return game.getWave() + " / " + game.getTotalWavesToWinLevel();
+        return String.valueOf(game.getTotalEnemiesPerLevel() >= 0 ? game.getTotalEnemiesPerLevel() : "0");
     }
 
     protected String getLabelText() {
-        return "Wave: ";
+        return "Enemies left: ";
     }
 }
