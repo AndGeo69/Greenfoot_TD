@@ -142,6 +142,8 @@ public class MyWorld extends World
             addTurret(1);
         } else if (Greenfoot.isKeyDown("2")) {
             addTurret(2);
+        } else if (Greenfoot.isKeyDown("3")) {
+            addTurret(3);
         }
         
     }
@@ -154,6 +156,8 @@ public class MyWorld extends World
                 addCannon();
             } else if (type == 2) {
                 addTurret(new AdvancedCannon());
+            } else if (type == 3) {
+                addTurret(new SniperCannon());
             }
         }
         

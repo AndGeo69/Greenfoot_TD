@@ -23,7 +23,7 @@ public class HelpText extends Actor
         image.setFont(font);
         //image.setColor(Color.WHITE);
         
-        image.drawString("Controlls", 10, 30);
+        image.drawString("Controls", 10, 30);
         
         image.drawString("To spawn turrets:", 10, 70);
         Font font2 = new Font("Arial", true, false, (int)18);

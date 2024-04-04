@@ -1,5 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.List;
 /**
  * Write a description of class SimpleCannon here.
  * 
@@ -8,7 +7,6 @@ import java.util.List;
  */
 public class SimpleCannon extends Turret
 {
-
     public int damage() {
         return 1;
     }

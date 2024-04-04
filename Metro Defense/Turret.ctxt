@@ -17,4 +17,6 @@ comment7.params=
 comment7.target=void\ enemyDetector()
 comment8.params=targetX\ targetY
 comment8.target=void\ fireProjectile(int,\ int)
-numComments=9
+comment9.params=c
+comment9.target=void\ pointAtObject(greenfoot.Actor)
+numComments=10

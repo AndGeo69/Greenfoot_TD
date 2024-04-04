@@ -30,6 +30,7 @@ public abstract class Turret extends Actor
         fireRateInterval++;
         List<Enemy> enemies = getObjectsInRange(radius(), Enemy.class);
         for(Enemy enemy : enemies) {
+            this.pointAtObject(enemy);
             if (fireRateInterval > fireRate()) {
                 fireRateInterval = 0;
                 fireProjectile(enemy.getX(), enemy.getY());
@@ -41,7 +42,10 @@ public abstract class Turret extends Actor
         Projectile projectile = new Projectile(damage());
         getWorld().addObject(projectile, getX(), getY());
         projectile.turnTowards(targetX, targetY);
-        this.turnTowards(targetX / 2, targetY / 2);
     }
     
+    public void pointAtObject(Actor c) 
+    { 
+        setRotation((int)(180*Math.atan2(c.getY()-getY(),c.getX()-getX())/Math.PI) + 90); 
+    }
 }

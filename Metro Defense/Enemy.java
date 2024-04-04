@@ -92,7 +92,6 @@ public class Enemy extends Actor
     public void hit() {
         Projectile projectile = (Projectile)getOneIntersectingObject(Projectile.class);
         if (projectile != null) {
-            
             hp = hp - projectile.getDamage();
             getWorld().removeObject(projectile);
         }
