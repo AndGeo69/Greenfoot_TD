@@ -84,6 +84,9 @@ public class MyWorld extends World
     public void setIsIntro(boolean intro) { this.isIntro = intro;}
     boolean isPlaying = false;
     
+    boolean isFinalLevel = false;
+    public void setIsFinal(boolean isFinal) {this.isFinalLevel = isFinal;}
+    
     private static final GreenfootSound ostSound = new GreenfootSound("Envision.mp3");
     
     public MyWorld(String [] map)
@@ -138,7 +141,11 @@ public class MyWorld extends World
     
     public void checkRemainingEnemies() {
         if (getTotalEnemiesPerLevel() <= 0) {
-            addObject(new Scoreboard("Level won!", totalKills, nextLevel), getWidth()/2, getHeight()/2);
+            String msgToShow = "Level won!";
+            if (isFinalLevel) {
+                msgToShow = "Congrats you finished the game!";
+            }
+            addObject(new Scoreboard(msgToShow, totalKills, nextLevel), getWidth()/2, getHeight()/2);
             removeEnemies();
             
             sound.setVolume(90);
@@ -214,7 +221,7 @@ public class MyWorld extends World
     public void spawnWave() {
         boolean shouldSpawnRandom = false;
         worldTime++;
-        if (worldTime >= 200) { //initial delay
+        if (worldTime >= 300) { //initial delay
             
             if (getTotalEnemiesPerLevel() > 0) {
                 
