@@ -19,11 +19,16 @@ public class Enemy extends Actor
     private int hp;
     private int level;
     private int pricePerKill;
+    
+    private GreenfootImage image1;
+    private GreenfootImage image2;
  
     public Enemy(int level, MyWorld game){
             this.level = level;
             this.myGame = game;
             if(level == 1) {
+                image1 = new GreenfootImage("spider-1.png");
+                image1 = new GreenfootImage("spider-2.png");
                 setImage("spider.png");
                 getImage().scale(40, 40);
                 hp = 6;
@@ -31,6 +36,8 @@ public class Enemy extends Actor
                 pricePerKill = 5;
             }
             else if(level == 2){
+                image1 = new GreenfootImage("snake2-1.png");
+                image1 = new GreenfootImage("snake2-2.png");
                 setImage("snake2.png");
                 getImage().scale(60, 60);
                 hp = 15;
@@ -38,6 +45,8 @@ public class Enemy extends Actor
                 pricePerKill = 10;
             }
             else if(level == 3){
+                image1 = new GreenfootImage("lizard2-1.png");
+                image1 = new GreenfootImage("lizard2-2.png");
                 setImage("lizard2.png");
                 getImage().scale(60, 60);
                 hp = 30;
@@ -51,9 +60,26 @@ public class Enemy extends Actor
             //}
         }
     
+    //private int imageCounter; 
+        
+    //public void switchImage() {
+        
+    //    imageCounter++; // change '2' higher to slow down animation
+    //    if (imageCounter % 25 == 0) {
+     //       imageCounter = 0;
+     //       if( getImage() == image1) {
+      //          setImage(image2);
+     //       } else {
+     //           setImage(image1);
+     //      }
+      //  }
+        
+    //}
+  
     public void act()
     {
         moveIntoPath();
+       // switchImage();
         hit();
 
     }
