@@ -22,4 +22,8 @@ public class SimpleCannon extends Turret
     public int price() {
         return 50;
     }
+    
+    public String soundName() {
+        return "cannon1.wav";
+    }
 }

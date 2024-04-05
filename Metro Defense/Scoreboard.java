@@ -9,8 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Scoreboard extends Actor
 {
     public static final float FONT_SIZE = 38.0f;
-    public static final int WIDTH = 400;
-    public static final int HEIGHT = 300;
+    public static final int WIDTH = 700;
+    public static final int HEIGHT = 400;
 
     private String message;
     private int score;
@@ -38,14 +38,21 @@ public class Scoreboard extends Actor
         this.score = score;
         makeImage(msg, "Score: ", score, nextLevel);
     }
-
+    
+    public Scoreboard(String title, String prefix, int score, World nextLevel)
+    {
+        this.message = title;
+        this.score = score;
+        makeImage(title, prefix, score, nextLevel);
+    }
+    
     private void makeImage(String title, String prefix, int score) {
         makeImage(title, prefix, score, null);
     }
     /**
      * Make the score board image.
      */
-    private void makeImage(String title, String prefix, int score, World nextLevel)
+    public void makeImage(String title, String prefix, int score, World nextLevel)
     {
         GreenfootImage image = new GreenfootImage(WIDTH, HEIGHT);
 
@@ -57,7 +64,12 @@ public class Scoreboard extends Actor
         image.setFont(font);
         image.setColor(Color.WHITE);
         image.drawString(title, 50, 80);
-        image.drawString(prefix + score, 50, 150);
+        if (score < 0) {
+            image.drawString(prefix, 50, 150);
+        } else {
+            image.drawString(prefix + score, 50, 150);
+        }
+        
         if (nextLevel != null) {
             this.nextLevel = nextLevel;
             image.setColor(Color.GREEN); // Set the color to blue
@@ -71,7 +83,7 @@ public class Scoreboard extends Actor
     public boolean isNextLevelClicked() {
         if (Greenfoot.mouseClicked(null)) {
             MouseInfo mouse = Greenfoot.getMouseInfo();
-            if (mouse != null && mouse.getX() >= 270 && mouse.getX() <= 440 && mouse.getY() >= 370 && mouse.getY() <= 400) {
+            if (mouse != null && mouse.getX() >= 120 && mouse.getX() <= 310 && mouse.getY() >= 300 && mouse.getY() <= 350) {
                 Greenfoot.setWorld(nextLevel); 
                 return true; // Click is within the region of "Next Level" text
             }

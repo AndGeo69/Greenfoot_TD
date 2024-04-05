@@ -39,6 +39,7 @@ public class Level2 extends MyWorld
         setMoney(150);
         setNewWorldHealth(30);
         setNextLevel(new Level3());
+        setVicstorySound("level_victory.mp3");
     
         setTotalEnemiesPerLevel(70);
      }

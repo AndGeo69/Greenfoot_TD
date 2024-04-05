@@ -28,7 +28,7 @@ public class HelpText extends Actor
         image.drawString("To spawn turrets:", 10, 70);
         Font font2 = new Font("Arial", true, false, (int)18);
         image.setFont(font2);
-        image.drawString("Hold '1' or '2'", 40, 110);
+        image.drawString("Hold key '1' / '2' / '3'", 40, 110);
         image.drawString("+", 80, 130);
         image.drawString("click on a tile", 40, 150);
         

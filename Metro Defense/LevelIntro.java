@@ -1,12 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Level1 here.
+ * Write a description of class LevelIntro here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Level1 extends MyWorld
+public class LevelIntro extends MyWorld
 {
 
     public static final int TILE_SIZE = 60;
@@ -33,9 +33,9 @@ public class Level1 extends MyWorld
     
     int remainingEnemies = 0;
     
-    public Level1() {
+    public LevelIntro() {
         super(WORLD);   
-        
+        setIsIntro(true);
         setSpawnX(20);
         setSpawnY((TILE_SIZE * 3) - HALF_TILE_SIZE);
           
@@ -45,7 +45,7 @@ public class Level1 extends MyWorld
         setVicstorySound("level_victory.mp3");
         
         setTotalEnemiesPerLevel(40);
-        setNextLevel(new Level2());
+        setNextLevel(new Level1());
      }
     
     public void act() {

@@ -72,18 +72,29 @@ public class MyWorld extends World
         money += newMoney;
     }
     
+    private String victorySound = "level_victory.mp3";
+    public void setVicstorySound(String sound) {this.victorySound = sound;}
+    public String getVictorySound() {return this.victorySound;}
+    
     private static int simpleCannonPrice = 50;
     
     int worldTime = 0;
 
+    boolean isIntro = false;
+    public void setIsIntro(boolean intro) { this.isIntro = intro;}
+    boolean isPlaying = false;
+    
+    private static final GreenfootSound ostSound = new GreenfootSound("Envision.mp3");
+    
     public MyWorld(String [] map)
     {    
         super(840, 600, 1);
-         
                 
+        ostSound.stop();       
         setWorldMap(map);
         addPath();
         
+            
         
         Menu menu = new Menu();
         addObject(menu,720,300);
@@ -92,13 +103,22 @@ public class MyWorld extends World
         addObject(new WaveShowable(this, 30), 720, 100);
         
         new TurretShop(this);
-                  
-
+        
         addObject(new HelpText(), 720, 400);
     }
     
-    
     public void act() {
+        isPlaying = true;
+        if(isPlaying) {
+            ostSound.setVolume(70);
+            if (!ostSound.isPlaying()) {
+                ostSound.play();
+            }
+        }
+        
+        if (isIntro) {
+            addObject(new Scoreboard("Welcome to Metro Defense", "See the right dialog for controls", -1, nextLevel), getWidth()/2, getHeight()/2);
+        }
         addTurretByKeyPressed();
         checkRemainingEnemies();
         checkHp();
@@ -109,14 +129,22 @@ public class MyWorld extends World
     public void checkHp() {
         if (worldHealth <= 0) {
             addObject(new Scoreboard(totalKills), getWidth()/2, getHeight()/2);
+            Greenfoot.playSound("game_over.mp3");
             Greenfoot.stop();
         }
     }
+    
+    GreenfootSound sound = new GreenfootSound(victorySound);
     
     public void checkRemainingEnemies() {
         if (getTotalEnemiesPerLevel() <= 0) {
             addObject(new Scoreboard("Level won!", totalKills, nextLevel), getWidth()/2, getHeight()/2);
             removeEnemies();
+            
+            sound.setVolume(90);
+            if (!sound.isPlaying()) {
+                sound.play();
+            }
         }
     }
     
@@ -186,7 +214,7 @@ public class MyWorld extends World
     public void spawnWave() {
         boolean shouldSpawnRandom = false;
         worldTime++;
-        if (worldTime >= 100) { //initial delay
+        if (worldTime >= 200) { //initial delay
             
             if (getTotalEnemiesPerLevel() > 0) {
                 

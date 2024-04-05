@@ -1,49 +1,50 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Level3 here.
+ * Write a description of class Level5 here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Level3 extends MyWorld
+public class Level5 extends MyWorld
 {
 
     public static final int TILE_SIZE = 60;
     private static final int HALF_TILE_SIZE = TILE_SIZE / 2;
 
-    //1 straigth path
+    ///1 straigth path
     //2 turn down
     //3 turh right
     //4 turn up
     //5 turn left
-    
-    
-    public final static String[] WORLD = {
-        "2032000000",
-        "1011000000",
-        "1011000320",
-        "1011000110",
-        "1011000110",
-        "1011000131",
-        "1013111400",
-        "1010000000",
-        "1010000000",
-        "3140000000"
+    // map preset
+     public final static String[] WORLD = {
+        "1200000000",
+        "0320000000",
+        "0032000000",
+        "0003200000",
+        "0000320000",
+        "0000032000",
+        "0000003200",
+        "0000000320",
+        "0000000032",
+        "0000000003"
     };
-        
-    public Level3() {
+    
+    
+    int remainingEnemies = 0;
+    
+    public Level5() {
         super(WORLD);   
-
+        
         setSpawnX(20);
         setSpawnY((TILE_SIZE * 1) - HALF_TILE_SIZE);
-        
+          
         setMoney(150);
         setNewWorldHealth(20);
-        setNextLevel(new Level4());
-        setVicstorySound("level_victory2.mp3");
-    
-        setTotalEnemiesPerLevel(90);
+        setVicstorySound("level_victory3.mp3");
+        
+        setTotalEnemiesPerLevel(130);
      }
     
     public void act() {

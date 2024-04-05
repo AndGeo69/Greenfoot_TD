@@ -14,6 +14,7 @@ public abstract class Turret extends Actor
     public abstract int damage();
     public abstract int radius();
     public abstract int price();
+    public abstract String soundName();
     
     private int fireRateInterval = 0;
 
@@ -38,7 +39,15 @@ public abstract class Turret extends Actor
         }
     }
     
+    GreenfootSound sound = new GreenfootSound(soundName());
+    
     protected void fireProjectile(int targetX, int targetY) {
+        
+        sound.setVolume(70);
+        if (!sound.isPlaying()) {
+            sound.play();
+        }
+        
         Projectile projectile = new Projectile(damage());
         getWorld().addObject(projectile, getX(), getY());
         projectile.turnTowards(targetX, targetY);

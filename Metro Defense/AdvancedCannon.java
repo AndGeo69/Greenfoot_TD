@@ -22,4 +22,8 @@ public class AdvancedCannon extends Turret
     public int price() {
         return 80;
     }
+    
+    public String soundName() {
+        return "cannon1.wav";
+    }
 }

@@ -11,7 +11,8 @@ import java.util.List;
 public class TurretShop extends Actor
 {
     public TurretShop(MyWorld world) {
-        world.addObject(new ImageShowable(new SimpleCannon(), 1), 680, 200);
-        world.addObject(new ImageShowable(new AdvancedCannon(), 2), 750, 200);        
+        world.addObject(new ImageShowable(new SimpleCannon(), 1), 650, 200);
+        world.addObject(new ImageShowable(new AdvancedCannon(), 2), 720, 200);
+        world.addObject(new ImageShowable(new SniperCannon(), 3), 790, 200);  
     }
 }

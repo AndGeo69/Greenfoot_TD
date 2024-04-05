@@ -42,7 +42,7 @@ public class Enemy extends Actor
                 getImage().scale(60, 60);
                 hp = 30;
                 movementSpeed = 2;
-                pricePerKill = 16;
+                pricePerKill = 14;
             }
             //else if(level == 4){
             //    setImage("blimp.png");

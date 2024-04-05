@@ -13,14 +13,18 @@ public class SniperCannon extends Turret
     }
     
     public int fireRate() {
-        return 40;
+        return 35;
     }
     
     public int radius() {
-        return 300;
+        return 350;
     }
     
     public int price() {
-        return 150;
+        return 130;
+    }
+    
+    public String soundName() {
+        return "sniper1.wav";
     }
 }
