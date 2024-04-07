@@ -24,6 +24,11 @@ public class Projectile extends Actor
         this.damage = damage;
     }
     
+    public Projectile(int damage, int speed) {
+        this.damage = damage;
+        this.speed = speed;
+    }
+    
 
     public void act()
     {

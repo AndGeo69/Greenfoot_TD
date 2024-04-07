@@ -54,6 +54,13 @@ public class Scoreboard extends Actor
      */
     public void makeImage(String title, String prefix, int score, World nextLevel)
     {
+
+        GreenfootImage helpText = null;
+        
+        if (score < 0) {
+            helpText = new HelpText().getHelpTextImg();
+        } 
+            
         GreenfootImage image = new GreenfootImage(WIDTH, HEIGHT);
 
         image.setColor(new Color(255,255,255, 128));
@@ -64,7 +71,9 @@ public class Scoreboard extends Actor
         image.setFont(font);
         image.setColor(Color.WHITE);
         image.drawString(title, 50, 80);
+        String txtToShow = "Next Level";
         if (score < 0) {
+            txtToShow = "Start";
             image.drawString(prefix, 50, 150);
         } else {
             image.drawString(prefix + score, 50, 150);
@@ -73,10 +82,14 @@ public class Scoreboard extends Actor
         if (nextLevel != null) {
             this.nextLevel = nextLevel;
             image.setColor(Color.GREEN); // Set the color to blue
-            image.drawString("Next Level", 50, 250);
+            image.drawString(txtToShow, 50, 250);
             isNextLevelClicked();
         }
         
+        if (helpText  != null) {
+            image.drawImage(helpText, 340, 160);
+        }
+    
         setImage(image);
     }
     

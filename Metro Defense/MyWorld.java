@@ -38,7 +38,10 @@ public class MyWorld extends World
     private World nextLevel;
     public void setNextLevel(World theNextLevel) {this.nextLevel = theNextLevel;}
     
-    public int totalKills;
+    public static int totalKills;
+    public int getTotalKills() {return this.totalKills;}
+    public void incrementTotalKills() {this.totalKills++;}
+    
     public int totalMoneyGained;
     
     private int spawnX;
@@ -87,7 +90,7 @@ public class MyWorld extends World
     boolean isFinalLevel = false;
     public void setIsFinal(boolean isFinal) {this.isFinalLevel = isFinal;}
     
-    private static final GreenfootSound ostSound = new GreenfootSound("Envision.mp3");
+    private static final GreenfootSound ostSound = new GreenfootSound("Bleeping Demo.mp3");
     
     public MyWorld(String [] map)
     {    
@@ -120,9 +123,10 @@ public class MyWorld extends World
         }
         
         if (isIntro) {
-            addObject(new Scoreboard("Welcome to Metro Defense", "See the right dialog for controls", -1, nextLevel), getWidth()/2, getHeight()/2);
+            addObject(new Scoreboard("Welcome to Metro Defense", "A simple Tower Defense game", -1, nextLevel), getWidth()/2, getHeight()/2);
         }
         addTurretByKeyPressed();
+        sellTurret();
         checkRemainingEnemies();
         checkHp();
         spawnWave();
@@ -132,6 +136,7 @@ public class MyWorld extends World
     public void checkHp() {
         if (worldHealth <= 0) {
             addObject(new Scoreboard(totalKills), getWidth()/2, getHeight()/2);
+            ostSound.setVolume(20);
             Greenfoot.playSound("game_over.mp3");
             Greenfoot.stop();
         }
@@ -169,7 +174,20 @@ public class MyWorld extends World
     }
     
     public void spawnEnemy(int type) {
+        //if (type == 0) {type = 1;}
         addObject(new Enemy(type, this), spawnX, spawnY);
+    }
+    
+    private void sellTurret() {
+        if (Greenfoot.mouseClicked(null) &&
+            Greenfoot.getMouseInfo() != null &&
+                (Greenfoot.getMouseInfo().getActor() instanceof Turret)) {
+            if (Greenfoot.getMouseInfo().getButton() == 3) {
+                Turret turretToBeDeleted = (Turret)Greenfoot.getMouseInfo().getActor();
+                money += turretToBeDeleted.price() * 0.8;
+                removeObject(turretToBeDeleted);
+            }
+        }
     }
     
     private void addTurretByKeyPressed() {
@@ -188,7 +206,7 @@ public class MyWorld extends World
         // not overlapping another actor
         if (Greenfoot.mouseClicked(null) && Greenfoot.getMouseInfo() != null && Greenfoot.getMouseInfo().getActor() == null) {
             if (type == 1) {
-                addCannon();
+                addTurret(new SimpleCannon());
             } else if (type == 2) {
                 addTurret(new AdvancedCannon());
             } else if (type == 3) {
@@ -196,10 +214,6 @@ public class MyWorld extends World
             }
         }
         
-    }
-    
-    private void addCannon() {
-        addTurret(new SimpleCannon());
     }
     
     private void addTurret(Turret turret) {
@@ -221,24 +235,24 @@ public class MyWorld extends World
     public void spawnWave() {
         boolean shouldSpawnRandom = false;
         worldTime++;
-        if (worldTime >= 300) { //initial delay
+        if (worldTime >= 500) { //initial delay
             
             if (getTotalEnemiesPerLevel() > 0) {
                 
-                if (worldTime < 1000 && worldTime % 50 == 0) {
+                if (worldTime < 1500 && worldTime % 45 == 0) {
                     spawnEnemy(1);
                 }
                 
-                if (worldTime % 75 == 0 && worldTime >= 1000) {
+                if (worldTime % 70 == 0 && worldTime >= 1500) {
                     spawnEnemy(2);
                 }
                 
-                if (worldTime % 85 == 0 && worldTime >= 2000) {
+                if (worldTime % 80 == 0 && worldTime >= 2500) {
                     spawnEnemy(3);
                 }
                 
-                if (worldTime % 75 == 0 && worldTime >= 3000) {
-                    spawnEnemy(Greenfoot.getRandomNumber(3));
+                if (worldTime % 60 == 0 && worldTime >= 3300) {
+                    spawnEnemy(Greenfoot.getRandomNumber(2)+1);
                 }
 
             }

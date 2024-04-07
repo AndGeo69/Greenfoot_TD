@@ -12,11 +12,11 @@ public class SimpleCannon extends Turret
     }
     
     public int fireRate() {
-        return 13;
+        return 14;
     }
     
     public int radius() {
-        return 100;
+        return 120;
     }
     
     public int price() {

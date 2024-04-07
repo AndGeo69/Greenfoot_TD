@@ -18,12 +18,32 @@ public abstract class Turret extends Actor
     
     private int fireRateInterval = 0;
 
+    private GreenfootImage previousImage;
+    
     public Turret() {
+        previousImage = getImage();
         getImage().scale(60, 60);
+    }
+    
+    private GreenfootImage getRadiusOverlayImg() {
+        int diameter = radius() * 2;
+        GreenfootImage img = new GreenfootImage(diameter, diameter);
+        img.setColor(Color.GREEN);
+        img.fillOval(0, 0, diameter, diameter);
+        img.setTransparency(100);
+        return img;
+    }
+    
+    private void showRadiusOnMouseHover() {
+        if (Greenfoot.mouseMoved(this) && Greenfoot.isKeyDown("shift"))
+            setImage(getRadiusOverlayImg());
+        if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this))
+            setImage(previousImage);
     }
     
     public void act()
     {
+        showRadiusOnMouseHover();
         enemyDetector();
     }
     
@@ -43,12 +63,12 @@ public abstract class Turret extends Actor
     
     protected void fireProjectile(int targetX, int targetY) {
         
-        sound.setVolume(70);
+        sound.setVolume(80);
         if (!sound.isPlaying()) {
             sound.play();
         }
         
-        Projectile projectile = new Projectile(damage());
+        Projectile projectile = (this instanceof SniperCannon) ? new Projectile(damage(), 14) : new Projectile(damage());
         getWorld().addObject(projectile, getX(), getY());
         projectile.turnTowards(targetX, targetY);
     }

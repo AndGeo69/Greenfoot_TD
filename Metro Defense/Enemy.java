@@ -40,7 +40,7 @@ public class Enemy extends Actor
                 image1 = new GreenfootImage("snake2-2.png");
                 setImage("snake2.png");
                 getImage().scale(60, 60);
-                hp = 15;
+                hp = 17;
                 movementSpeed = 3;
                 pricePerKill = 10;
             }
@@ -49,7 +49,7 @@ public class Enemy extends Actor
                 image1 = new GreenfootImage("lizard2-2.png");
                 setImage("lizard2.png");
                 getImage().scale(60, 60);
-                hp = 30;
+                hp = 27;
                 movementSpeed = 2;
                 pricePerKill = 14;
             }
@@ -124,7 +124,7 @@ public class Enemy extends Actor
         
         if (hp < 1) {
             myGame.money += pricePerKill;
-            myGame.totalKills++;
+            myGame.incrementTotalKills();
             myGame.totalMoneyGained += pricePerKill;
             myGame.setTotalEnemiesPerLevel(myGame.getTotalEnemiesPerLevel() - 1);
             getWorld().removeObject(this);

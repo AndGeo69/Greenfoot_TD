@@ -17,11 +17,11 @@ public class SniperCannon extends Turret
     }
     
     public int radius() {
-        return 350;
+        return 250;
     }
     
     public int price() {
-        return 130;
+        return 120;
     }
     
     public String soundName() {

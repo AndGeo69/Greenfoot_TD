@@ -44,7 +44,7 @@ public class Level1 extends MyWorld
 
         setVicstorySound("level_victory.mp3");
         
-        setTotalEnemiesPerLevel(40);
+        setTotalEnemiesPerLevel(60);
         setNextLevel(new Level2());
      }
     
