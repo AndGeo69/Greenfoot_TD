@@ -288,10 +288,7 @@ public class MyWorld extends World
                 }
                 
                 
-                if (WORLD[j].charAt(i) == '0') {
-                    addObject(new InvisibleObstacle(), HALF_TILE_SIZE + i * TILE_SIZE,
-                            HALF_TILE_SIZE + j * TILE_SIZE);
-                }
+                
             }
         }
     }
